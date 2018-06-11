@@ -1,5 +1,6 @@
 import { SET_ANSWER,
-         SET_TIME_REMAINING } from "store/actionTypes";
+         SET_TIME_REMAINING,
+         INC_PLAYABLE_SONG_COUNT } from "store/actionTypes";
 
 export function setAnswer(answer) {
   return {
@@ -12,5 +13,11 @@ export function setTimeRemaining(secs) {
   return {
     type: SET_TIME_REMAINING,
     payload: secs
+  }
+};
+
+export function incPlayableSongCount() {
+  return {
+    type: INC_PLAYABLE_SONG_COUNT
   }
 };
