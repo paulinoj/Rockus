@@ -28,7 +28,6 @@ class GamePlayPanel extends Component {
   render() {
     return (
       <div className="game-play-panel">
-        GAME PLAY PANEL
         <StartButton />
         <CountdownClock />
         <ResponsePanel />

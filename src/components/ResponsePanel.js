@@ -20,7 +20,7 @@ class ResponsePanel extends Component {
     e.preventDefault();
     this.props.setAnswer(this.state.value);
     this.setState({
-      vlaue: ""
+      value: ""
     });
   }
 

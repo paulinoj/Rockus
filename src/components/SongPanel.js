@@ -2,12 +2,15 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "store/actions";
 import Equalizer from "components/Equalizer";
+import Answer from "components/Answer";
 
 class SongPanel extends Component {
   constructor() {
     super();
     this.state = {
-      songStarted: false
+      songStarted: false,
+      songGuessedCorrectly: false,
+      songScore: 0
     }
   }
 
@@ -17,6 +20,16 @@ class SongPanel extends Component {
       this.audio.removeEventListener("canplaythrough", _listener);
     };
     this.audio.addEventListener("canplaythrough", _listener);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.answer === this.props.title && !this.state.songGuessedCorrectly) {
+      this.setState({ songGuessedCorrectly: true });
+      this.setState({ songScore: nextProps.timeRemaining });
+      this.audio.pause();
+    } else if (nextProps.answer === this.props.title && this.state.songGuessedCorrectly) {
+      // Make answerbox flash
+    }  
   }
 
   componentDidUpdate() {
@@ -30,20 +43,23 @@ class SongPanel extends Component {
   }
 
   render() {
-    const { url } = this.props;
+    const { title, url } = this.props;
+    const answerCorrect = this.state.songGuessedCorrectly;
     return (
       <div className="song-panel">
         <audio controls ref={(audio) => { this.audio = audio }} >
           <source src={url} type="audio/mpeg" />
         </audio>
-        <Equalizer />
+        <Answer show={answerCorrect} title={title} score={this.state.songScore} />
+        <Equalizer show={!answerCorrect} />
       </div>
-    )
+    );
   }
 }
 
 function mapStateToProps(state) {
   return {
+    answer: state.answer,
     timeRemaining: state.timeRemaining
   }
 }

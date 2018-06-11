@@ -25,7 +25,7 @@ audio {
   display: none;
 }
 
-.equalizer {
+.equalizer, .answer {
   background-color: black;
   opacity: 0.5;
   width: 100%;
@@ -34,6 +34,8 @@ audio {
   top: 0;
   left: 0;
   border-radius: 10px;
+  transition: all 1s;
+  backface-visibility: hidden;
 }
 
 .equalizer__display {
@@ -43,6 +45,21 @@ audio {
   top: 0;
   left: 0;
   transform: rotate(180deg);
+}
+
+.answer {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flip-backward {
+  transform: rotateX(180deg);
+}
+
+.flip-forward {
+  transform: rotateX(-180deg);
 }
 
 .bar {
