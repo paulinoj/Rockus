@@ -5,12 +5,33 @@ import * as actions from "store/actions";
 class ResponsePanel extends Component {
   constructor() {
     super();
+    this.state = {
+      value: ""
+    }
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      value: e.target.value
+    })
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.setAnswer(this.state.value);
+    this.setState({
+      vlaue: ""
+    });
   }
 
   render() {
+    const { value } = this.state;
     return (
       <div className="response-panel">
-        RESPONSE PANEL
+        <form onSubmit={this.handleSubmit}>
+          <input onChange={this.handleChange} type="text" value={value}/>
+          <button>GUESS</button>
+        </form>
       </div>
     )
   }
