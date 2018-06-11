@@ -36,6 +36,7 @@ class SongPanel extends Component {
         <audio controls ref={(audio) => { this.audio = audio }} >
           <source src={url} type="audio/mpeg" />
         </audio>
+        <Equalizer />
       </div>
     )
   }
