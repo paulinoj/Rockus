@@ -7,10 +7,14 @@ class StartButton extends Component {
     super();
   }
 
+  handleClick = () => {
+    this.props.setTimeRemaining(120);
+  }
+
   render() {
     return (
       <div className="start-button">
-        START BUTTON
+        <button onClick={this.handleClick}>Start Game</button>
       </div>
     )
   }
