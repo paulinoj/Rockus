@@ -5,6 +5,8 @@ const app = express();
 const bodyParser = require("body-parser");
 const errorHandler = require("./handlers/error");
 const authRoutes = require("./routes/auth");
+const testRoute = require("./routes/test");
+const { isAuthenticated, isAuthorized } = require("./middleware/auth");
 
 const PORT = process.env.PORT || 8081;
 
@@ -13,6 +15,12 @@ app.use(bodyParser.json());
 app.use(express.static(path.resolve(__dirname, "./rockus-client/build")));
 
 app.use("/api/auth", authRoutes);
+
+app.use("/api/users/:id/test",
+  isAuthenticated,
+  isAuthorized,
+  testRoute
+);
 
 app.get("*", function(request, response) {
   response.sendFile(path.resolve(__dirname, "./rockus-client/build", "index.html"));
