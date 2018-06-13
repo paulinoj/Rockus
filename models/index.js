@@ -6,3 +6,5 @@ mongoose.connect("mongodb://localhost/rockus", {
 });
 
 module.exports.User = require("./user");
+module.exports.SongList = require("./songList");
+module.exports.Song = require("./song");
