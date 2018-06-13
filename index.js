@@ -7,8 +7,11 @@ const errorHandler = require("./handlers/error");
 const authRoutes = require("./routes/auth");
 const testRoute = require("./routes/test");
 const { isAuthenticated, isAuthorized } = require("./middleware/auth");
+const seedDatabase = require("./middleware/seedDatabase");
 
 const PORT = process.env.PORT || 8081;
+
+seedDatabase();
 
 app.use(bodyParser.json());
 
