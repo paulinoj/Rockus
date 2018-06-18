@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import * as actions from "store/actions";
 
 class StartButton extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
 
   handleClick = () => {

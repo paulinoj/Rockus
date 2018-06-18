@@ -5,8 +5,8 @@ import Equalizer from "components/Equalizer";
 import Answer from "components/Answer";
 
 class SongPanel extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       songStarted: false,
       songGuessedCorrectly: false,

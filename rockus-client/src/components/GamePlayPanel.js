@@ -7,8 +7,8 @@ import ResponsePanel from "components/ResponsePanel";
 import SongPanel from "components/SongPanel";
 
 class GamePlayPanel extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     /* DUMMY DATA */
     this.songList = [
       {title: "song1", url: "https://rockus-music.s3.amazonaws.com/Song1.mp3?AWSAccessKeyId=AKIAJ4SN4KBKOGX4O5XA&Expires=1528770033&Signature=dLoulOrqsHOZYLl5jLeXbct%2Bbhg%3D"},
