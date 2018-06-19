@@ -12,6 +12,12 @@ class AuthForm extends Component {
     }
   }
 
+  componentDidMount() {
+    this.props.history.listen(() => {
+      this.props.removeError();
+    });
+  }
+
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
@@ -24,16 +30,27 @@ class AuthForm extends Component {
     this.props.onAuth(authType, this.state)
       .then(() => {
         console.log("LOGGED IN");
+        this.props.history.push("/");
       })
+      .catch(() => {
+        return;
+      });
   }
 
   render() {
     const { email, username, password } = this.state;
-    const { heading, buttonText, signUp } = this.props;
+    const { 
+      heading,
+      buttonText,
+      signUp,
+      errors
+    } = this.props;
+
     return (
       <div className="auth-form">
         <form onSubmit={this.handleSubmit}>
           <h2>{heading}</h2>
+          {errors.message && <div className="errors">{errors.message}</div>}
           <label htmlFor="email">Email:</label>
           <input 
             type="text" 
