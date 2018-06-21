@@ -15,6 +15,18 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true
+  },
+  lastClassicalSongList: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "SongList"
+  },
+  lastDiscoSongList: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "SongList"
+  },
+  lastPopSongList: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "SongList"
   }
 });
 

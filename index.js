@@ -6,6 +6,8 @@ const bodyParser = require("body-parser");
 const errorHandler = require("./handlers/error");
 const authRoutes = require("./routes/auth");
 const testRoute = require("./routes/test");
+const songListRoute = require("./routes/songList");
+
 const { isAuthenticated, isAuthorized } = require("./middleware/auth");
 const seedDatabase = require("./middleware/seedDatabase");
 
@@ -23,6 +25,12 @@ app.use("/api/users/:id/test",
   isAuthenticated,
   isAuthorized,
   testRoute
+);
+
+app.use("/api/users/:id/songList",
+  isAuthenticated,
+  isAuthorized,
+  songListRoute
 );
 
 app.get("*", function(request, response) {
