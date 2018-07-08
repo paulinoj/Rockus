@@ -3,12 +3,14 @@ import currentUser from "store/reducers/currentUser";
 import errors from "store/reducers/errors";
 import answer from "store/reducers/answer";
 import timeRemaining from "store/reducers/timeRemaining";
+import songList from "store/reducers/songList";
 
 const rootReducer = combineReducers({
   currentUser,
   errors,
   answer,
-  timeRemaining
+  timeRemaining,
+  songList
 });
 
 export default rootReducer;

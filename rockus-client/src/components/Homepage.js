@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import SelectGenrePanel from "components/SelectGenrePanel";
 
 const Homepage = ({ currentUser }) => {
   if (!currentUser.isAuthenticated) {
@@ -16,6 +17,7 @@ const Homepage = ({ currentUser }) => {
     <div>
       <h1>THIS IS THE HOME PAGE AFTER BEING LOGGED IN</h1>
       <div>Current User:  <span>{currentUser.user.username}</span></div>
+      <SelectGenrePanel />
     </div>
   );
 };

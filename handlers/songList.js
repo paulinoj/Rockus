@@ -3,6 +3,7 @@ const db = require("../models");
 module.exports = async function(req, res, next) {
   const userId = req.params.id;
   const category = req.body.category;
+
   // Get name of category field to update in user record 
   const fieldName = "last" + category + "SongList";
   try {
