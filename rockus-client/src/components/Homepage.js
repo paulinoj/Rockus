@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import SelectGenrePanel from "components/SelectGenrePanel";
 
 const Homepage = ({ currentUser }) => {
@@ -13,6 +14,7 @@ const Homepage = ({ currentUser }) => {
       </div>
     );
   }
+
   return (
     <div>
       <h1>THIS IS THE HOME PAGE AFTER BEING LOGGED IN</h1>
@@ -22,4 +24,10 @@ const Homepage = ({ currentUser }) => {
   );
 };
 
-export default Homepage;
+function mapStateToProps(state) {
+  return ({
+    currentUser: state.currentUser
+  })
+}
+
+export default connect(mapStateToProps)(Homepage);

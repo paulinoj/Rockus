@@ -20,8 +20,6 @@ class SelectGenrePanel extends Component {
 
   render() {
     let { errors } = this.props;
-    console.log("RENDER ERRORS");
-    console.log(errors);
     return (
       <div className="select-genre-panel">
         {errors.message && <div className="errors">{errors.message}</div>}
@@ -35,7 +33,6 @@ class SelectGenrePanel extends Component {
 
 function mapStateToProps(state) {
   return {
-    songList: state.songList,
     currentUser: state.currentUser,
     errors: state.errors
   }

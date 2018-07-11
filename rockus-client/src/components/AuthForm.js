@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import * as actions from "store/actions";
+import { authUser } from "store/actions/auth";
+import { removeError } from "store/actions/errors";
 
 class AuthForm extends Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class AuthForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const authType = this.props.signUp ? "signup" : "signin";
-    this.props.onAuth(authType, this.state)
+    this.props.authUser(authType, this.state)
       .then(() => {
         console.log("LOGGED IN");
         this.props.history.push("/");
@@ -84,4 +85,11 @@ class AuthForm extends Component {
   }
 }
 
-export default connect(null, actions)(AuthForm);
+function mapStateToProps(state) {
+  return {
+    currentUser: state.currentUser,
+    errors: state.errors
+  };
+}
+
+export default connect(mapStateToProps, { authUser, removeError })(AuthForm);

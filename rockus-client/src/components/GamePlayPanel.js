@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-// import * as actions from "store/actions";
 import StartButton from "components/StartButton";
 import CountdownClock from "components/CountdownClock";
 import ResponsePanel from "components/ResponsePanel";
@@ -14,7 +13,7 @@ class GamePlayPanel extends Component {
 
   renderSongList() {
     return this.props.songList.songs.map((song, index) => {
-      return <SongPanel key={song.id} title={song.title} url={song.url} />
+      return <SongPanel key={song._id} title={song.title} url={song.url} />
     });
   }
 
@@ -32,7 +31,6 @@ class GamePlayPanel extends Component {
 
 function  mapStateToProps(state) {
   return {
-    currentUser: state.currentUser,
     songList: state.songList
   }
 }
