@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import ScoreBoard from "components/ScoreBoard";
 import StartButton from "components/StartButton";
 import CountdownClock from "components/CountdownClock";
 import ResponsePanel from "components/ResponsePanel";
@@ -20,6 +21,7 @@ class GamePlayPanel extends Component {
   render() {
     return (
       <div className="game-play-panel">
+        <ScoreBoard />
         <StartButton />
         <CountdownClock />
         <ResponsePanel />

@@ -1,6 +1,7 @@
 import { SET_ANSWER,
          SET_TIME_REMAINING,
-         INC_PLAYABLE_SONG_COUNT } from "store/actionTypes";
+         INC_PLAYABLE_SONG_COUNT,
+         INC_TOTAL_SCORE } from "store/actionTypes";
 
 export function setAnswer(answer) {
   return {
@@ -19,5 +20,12 @@ export function setTimeRemaining(secs) {
 export function incPlayableSongCount() {
   return {
     type: INC_PLAYABLE_SONG_COUNT
+  }
+};
+
+export function incTotalScore(value) {
+  return {
+    type: INC_TOTAL_SCORE,
+    payload: value
   }
 };

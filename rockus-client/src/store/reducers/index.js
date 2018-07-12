@@ -4,13 +4,15 @@ import errors from "store/reducers/errors";
 import answer from "store/reducers/answer";
 import timeRemaining from "store/reducers/timeRemaining";
 import songList from "store/reducers/songList";
+import totalScore from "store/reducers/totalScore";
 
 const rootReducer = combineReducers({
   currentUser,
   errors,
   answer,
   timeRemaining,
-  songList
+  songList,
+  totalScore
 });
 
 export default rootReducer;

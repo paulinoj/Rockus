@@ -26,7 +26,9 @@ class SongPanel extends Component {
     if ((nextProps.answer === this.props.title && !this.state.songGuessedCorrectly) ||
         (nextProps.timeRemaining === 0 && this.state.songScore === 0)) {
       this.setState({ songGuessedCorrectly: true });
-      this.setState({ songScore: nextProps.timeRemaining });
+      this.setState({ songScore: nextProps.timeRemaining }, () => {
+        this.props.incTotalScore(this.state.songScore);
+      });
       this.audio.pause();
     } else if (nextProps.answer === this.props.title && this.state.songGuessedCorrectly) {
       // Make answerbox flash
