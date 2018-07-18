@@ -5,6 +5,7 @@ import answer from "store/reducers/answer";
 import timeRemaining from "store/reducers/timeRemaining";
 import songList from "store/reducers/songList";
 import totalScore from "store/reducers/totalScore";
+import playableSongCount from "store/reducers/playableSongCount";
 
 const rootReducer = combineReducers({
   currentUser,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   answer,
   timeRemaining,
   songList,
-  totalScore
+  totalScore,
+  playableSongCount
 });
 
 export default rootReducer;

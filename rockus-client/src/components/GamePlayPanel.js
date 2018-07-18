@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import ScoreBoard from "components/ScoreBoard";
-import StartButton from "components/StartButton";
+import ActionButton from "components/ActionButton";
 import CountdownClock from "components/CountdownClock";
 import ResponsePanel from "components/ResponsePanel";
 import SongPanel from "components/SongPanel";
@@ -22,7 +22,7 @@ class GamePlayPanel extends Component {
     return (
       <div className="game-play-panel">
         <ScoreBoard />
-        <StartButton />
+        <ActionButton />
         <CountdownClock />
         <ResponsePanel />
         {this.renderSongList()}

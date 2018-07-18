@@ -2,10 +2,16 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { fetchSongList } from "store/actions/songList";
+import { setTimeRemaining, resetPlayableSongCount } from "store/actions";
 
 class SelectGenrePanel extends Component {
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
+    this.props.setTimeRemaining(-1);
+    this.props.resetPlayableSongCount();
   }
 
   handleClick = (e) => {
@@ -38,4 +44,7 @@ function mapStateToProps(state) {
   }
 }
 
-export default withRouter(connect(mapStateToProps, { fetchSongList })(SelectGenrePanel));
+export default withRouter(connect(mapStateToProps, 
+  { fetchSongList,
+    setTimeRemaining,
+    resetPlayableSongCount })(SelectGenrePanel));
