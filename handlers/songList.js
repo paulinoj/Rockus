@@ -16,12 +16,14 @@ module.exports = async function(req, res, next) {
       songList = await db.SongList
       .find({ category: category, createdAt: { $gt: new Date(1900, 01, 01) }})
       .populate("songs")
+      .populate('highScorers.user')
       .sort({ _id: 1 })
       .limit(1);
     } else {
       songList = await db.SongList
       .find({ category: category, _id: { $gt: currentUser[fieldName] }})
       .populate("songs")
+      .populate('highScorers.user')
       .sort({ _id: 1 })
       .limit(1);
     }

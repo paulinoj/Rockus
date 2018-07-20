@@ -14,6 +14,17 @@ const songListSchema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: "Song"
     }
+  ],
+  highScorers: [
+    {
+      score: {
+        type: Number
+      },
+      user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"  
+      }
+    }
   ]
 }, { timestamps: true });
 

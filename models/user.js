@@ -16,6 +16,9 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  photoUrl: {
+    type: String
+  },
   lastClassicalSongList: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "SongList"
