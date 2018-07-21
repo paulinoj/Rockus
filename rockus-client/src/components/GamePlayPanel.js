@@ -5,11 +5,31 @@ import ActionButton from "components/ActionButton";
 import CountdownClock from "components/CountdownClock";
 import ResponsePanel from "components/ResponsePanel";
 import SongPanel from "components/SongPanel";
-import { fetchSongList } from "store/actions/songList";
+import { postNewHighScore } from "store/actions/songList";
 
 class GamePlayPanel extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      gameOver: false
+    };
+  }
+
+  setGameOver() {
+    const { highScorers } = this.props.songList;
+    const { totalScore } = this.props;
+    if (highScorers[highScorers.length - 1].score < totalScore) {
+      this.props.postNewHighScore(totalScore,
+        this.props.currentUser.user.id,
+        this.props.songList._id);
+    }
+    this.setState({ gameOver: true });
+  }
+
+  componentDidUpdate() {
+    if (this.props.timeRemaining === 0 && !this.state.gameOver) {
+      this.setGameOver();
+    }
   }
 
   renderSongList() {
@@ -33,8 +53,11 @@ class GamePlayPanel extends Component {
 
 function  mapStateToProps(state) {
   return {
-    songList: state.songList
+    currentUser: state.currentUser,
+    songList: state.songList,
+    totalScore: state.totalScore,
+    timeRemaining: state.timeRemaining
   }
 }
 
-export default connect(mapStateToProps, { fetchSongList })(GamePlayPanel);
+export default connect(mapStateToProps, { postNewHighScore })(GamePlayPanel);

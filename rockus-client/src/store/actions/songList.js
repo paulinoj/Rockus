@@ -24,3 +24,21 @@ export const fetchSongList = (userId, category) => {
     }))
   };
 };
+
+export const postNewHighScore = (totalScore, userId, songListId) => {
+  return dispatch => {
+    return new Promise(((resolve, reject) => {
+      return apiCall("put",
+      `/api/users/${userId}/songList/${songListId}`,
+      { totalScore })
+      .then(res => {
+        dispatch(loadSongList(res));
+        resolve();
+      })
+      .catch(err => {
+        dispatch(addError(err.message));
+        reject();
+      });
+    }))
+  };
+};

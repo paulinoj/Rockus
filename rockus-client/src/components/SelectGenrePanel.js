@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { fetchSongList } from "store/actions/songList";
-import { setTimeRemaining, resetPlayableSongCount } from "store/actions";
+import { setTimeRemaining, 
+         resetPlayableSongCount,
+         resetScore } from "store/actions";
 
 class SelectGenrePanel extends Component {
   constructor(props) {
@@ -12,6 +14,7 @@ class SelectGenrePanel extends Component {
   componentDidMount() {
     this.props.setTimeRemaining(-1);
     this.props.resetPlayableSongCount();
+    this.props.resetScore();
   }
 
   handleClick = (e) => {
@@ -47,4 +50,5 @@ function mapStateToProps(state) {
 export default withRouter(connect(mapStateToProps, 
   { fetchSongList,
     setTimeRemaining,
-    resetPlayableSongCount })(SelectGenrePanel));
+    resetPlayableSongCount,
+    resetScore })(SelectGenrePanel));

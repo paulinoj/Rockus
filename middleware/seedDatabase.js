@@ -47,6 +47,8 @@ async function seedDatabase() {
         );
         await songList.save();
       }
+      songList.highScorers.sort((a, b) => b.score - a.score);
+      await songList.save();
     }
   } catch (err) {
     console.log("Database Error");

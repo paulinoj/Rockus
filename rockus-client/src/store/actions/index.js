@@ -2,7 +2,8 @@ import { SET_ANSWER,
          SET_TIME_REMAINING,
          INC_PLAYABLE_SONG_COUNT,
          RESET_PLAYABLE_SONG_COUNT,
-         INC_TOTAL_SCORE } from "store/actionTypes";
+         INC_TOTAL_SCORE,
+         RESET_SCORE } from "store/actionTypes";
 
 export function setAnswer(answer) {
   return {
@@ -34,5 +35,11 @@ export function incTotalScore(value) {
   return {
     type: INC_TOTAL_SCORE,
     payload: value
+  }
+};
+
+export function resetScore() {
+  return {
+    type: RESET_SCORE
   }
 };
