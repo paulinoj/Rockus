@@ -1,6 +1,17 @@
 const db = require("../models");
 
-module.exports = async function(req, res, next) {
+function queue(fn) {
+  let lastPromise = Promise.resolve();
+  return function(req, res, next) {
+    let returnedPromise = lastPromise.then(() => fn(req, res, next));
+    // If `returnedPromise` rejected, swallow the rejection for the queue,
+    // but `returnedPromise` rejections will still be visible outside the queue
+    lastPromise = returnedPromise.catch(() => {});
+    return returnedPromise;
+  };
+}
+
+const updateHighScore = async function(req, res, next) {
   const songListId = req.params.songListId;
   try {
     let currentSongList = await db.SongList.findById(songListId);
@@ -25,3 +36,5 @@ module.exports = async function(req, res, next) {
     });    
   }
 };
+
+module.exports = queue(updateHighScore);
